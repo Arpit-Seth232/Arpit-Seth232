@@ -11,7 +11,18 @@ Sitapur, U.P., India • [arpitseth232@gmail.com](mailto:arpitseth232@gmail.com)
 
 <br />
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&pause=1000&color=36BCF7&center=true&vcenter=true&width=600&lines=Java+Spring+Boot;Microservices+%26+Event-Driven+Architectures;Kafka%2C+Redis%2C+Docker+%26+Distributed+Systems;600%2B+LeetCode+Problems+Solved)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&pause=1000&color=36BCF7&center=true&vcenter=true&width=600&lines=Java+Spring+Boot+%26+C%23;Microservices+%26+Event-Driven+Architectures;Kafka%2C+Redis%2C+Docker+%26+Distributed+Systems;600%2B+LeetCode+Problems+Solved)](https://git.io/typing-svg)
+
+</div>
+
+---
+
+### 📊 GitHub & Coding Stats
+
+<div align="center">
+
+<img src="https://streak-stats.demolab.com/?user=Arpit-Seth232&theme=tokyonight&hide_border=true" alt="Arpit's Streak Stats" width="48%" align="top" />
+<img src="./leetcode.svg" alt="LeetCode Rating History" width="48%" align="top" />
 
 </div>
 
@@ -30,6 +41,7 @@ Sitapur, U.P., India • [arpitseth232@gmail.com](mailto:arpitseth232@gmail.com)
 **Languages:**
 ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
 ![C++](https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white)
+![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![SQL](https://img.shields.io/badge/SQL-003B57?style=for-the-badge&logo=postgresql&logoColor=white)
 
@@ -75,23 +87,9 @@ Sitapur, U.P., India • [arpitseth232@gmail.com](mailto:arpitseth232@gmail.com)
 - Designed a cron-based **GitHub Activity Sync** capturing 4 event types with timestamp-based session linking.
 - Managed database migrations across 9 versions using **Flyway** and enforced secure refresh token rotation with **Redis**.
 
-#### 🏦 [Bank Management System](https://github.com/Arpit-Seth232/Bank_Management_System) *(Apr 2025)*
+#### 🏦 [Bank Management System](https://github.com/Arpit-Seth232/Bank-Management-System) *(Apr 2025)*
 *Tech Stack: C++, OOP, STL, File Handling*
 - Built an object-oriented system in C++ with full support for account management, transactional actions, and persistent file storage.
-
----
-
-### 📊 GitHub & Coding Stats
-
-<div align="center">
-
-<img src="https://streak-stats.demolab.com/?user=Arpit-Seth232&theme=tokyonight&hide_border=true" alt="Arpit's Streak Stats" width="48%" />
-
-<div align="center">
-  <img src="./leetcode.svg" alt="Arpit Seth LeetCode Stats" />
-</div>
-
-</div>
 
 ---
 
