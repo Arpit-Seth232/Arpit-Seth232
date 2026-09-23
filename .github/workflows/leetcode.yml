@@ -1,27 +1,102 @@
-name: Update LeetCode Stats Graph
+name: Update LeetCode Stats SVG
 
 on:
   schedule:
-    # Runs automatically every day at midnight UTC
-    - cron: '0 0 * * *'
+    - cron: '0 0 * * *' # Runs every day at midnight
   workflow_dispatch: # Allows manual trigger from Actions tab
 
 jobs:
-  update-readme:
+  update-leetcode:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Fetch LeetCode Stats
-        uses: joshcangit/leetcode-readme-action@v1.3.0
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          leetcode-username: Arpit_Seth
+          python-version: '3.x'
+
+      - name: Fetch Data & Generate LeetCode SVG
+        run: |
+          python -c '
+          import urllib.request
+          import json
+
+          username = "Arpit_Seth"
+          query = """
+          query getUserProfile($username: String!) {
+            matchedUser(username: $username) {
+              submitStats {
+                acSubmissionNum {
+                  difficulty
+                  count
+                }
+              }
+            }
+            userContestRanking(username: $username) {
+              rating
+              globalRanking
+            }
+          }
+          """
+
+          req = urllib.request.Request(
+              "https://leetcode.com/graphql",
+              data=json.dumps({"query": query, "variables": {"username": username}}).encode("utf-8"),
+              headers={"Content-Type": "application/json", "User-Agent": "Mozilla/5.0"}
+          )
+
+          try:
+              with urllib.request.urlopen(req) as response:
+                  res = json.loads(response.read().decode())
+                  
+                  stats = res["data"]["matchedUser"]["submitStats"]["acSubmissionNum"]
+                  total = next(item["count"] for item in stats if item["difficulty"] == "All")
+                  easy = next(item["count"] for item in stats if item["difficulty"] == "Easy")
+                  medium = next(item["count"] for item in stats if item["difficulty"] == "Medium")
+                  hard = next(item["count"] for item in stats if item["difficulty"] == "Hard")
+                  
+                  contest = res["data"]["userContestRanking"]
+                  rating = round(contest["rating"]) if contest else "1674"
+                  ranking = f"{contest[\"globalRanking\"]:,}" if contest else "N/A"
+
+                  svg = f"""<svg width="420" height="180" viewBox="0 0 420 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <style>
+              .bg {{ fill: #1a1b26; rx: 10px; }}
+              .title {{ font: 600 16px "Segoe UI", Ubuntu, sans-serif; fill: #7aa2f7; }}
+              .stat {{ font: 400 13px "Segoe UI", Ubuntu, sans-serif; fill: #a9b1d6; }}
+              .highlight {{ font: 600 13px "Segoe UI", Ubuntu, sans-serif; fill: #ff9e64; }}
+              .easy {{ fill: #9ece6a; font-weight: 600; }}
+              .med {{ fill: #e0af68; font-weight: 600; }}
+              .hard {{ fill: #f7768e; font-weight: 600; }}
+            </style>
+            <rect width="420" height="180" class="bg"/>
+            <text x="25" y="35" class="title">🧩 Live LeetCode Stats (@{username})</text>
+            <text x="25" y="70" class="stat">Contest Rating: <tspan class="highlight">{rating}</tspan></text>
+            <text x="25" y="95" class="stat">Global Ranking: <tspan class="highlight">{ranking}</tspan></text>
+            <text x="25" y="125" class="stat">Total Problems Solved: <tspan class="highlight">{total}</tspan></text>
+            <text x="25" y="150" class="stat">
+              <tspan class="easy">Easy: {easy}</tspan>  |  
+              <tspan class="med">Medium: {medium}</tspan>  |  
+              <tspan class="hard">Hard: {hard}</tspan>
+            </text>
+          </svg>"""
+
+                  with open("leetcode.svg", "w", encoding="utf-8") as f:
+                      f.write(svg)
+                  print("leetcode.svg generated successfully!")
+          except Exception as e:
+              print("Error fetching LeetCode data:", e)
+          '
 
       - name: Commit and Push Changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git diff --quiet && git diff --staged --quiet || git commit -m "Update LeetCode stats graph"
+          git add leetcode.svg
+          git diff --quiet && git diff --staged --quiet || git commit -m "Update dynamic LeetCode SVG"
           git push
