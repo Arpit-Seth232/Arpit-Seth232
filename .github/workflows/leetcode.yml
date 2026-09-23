@@ -2,8 +2,8 @@ name: Update LeetCode Stats SVG
 
 on:
   schedule:
-    - cron: '0 0 * * *' # Runs every day at midnight UTC
-  workflow_dispatch: # Allows manual trigger from Actions tab
+    - cron: '0 0 * * *'
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -25,7 +25,7 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Fetch Data & Generate Contest Rating Graph SVG
+      - name: Fetch Data & Generate Aesthetic LeetCode SVG
         run: |
           python -c '
           import urllib.request
@@ -45,14 +45,10 @@ jobs:
             userContestRanking(username: $username) {
               rating
               globalRanking
-              topPercentage
             }
             userContestRankingHistory(username: $username) {
               attended
               rating
-              contest {
-                title
-              }
             }
           }
           """
@@ -67,7 +63,6 @@ jobs:
               with urllib.request.urlopen(req) as response:
                   res = json.loads(response.read().decode())
                   
-                  # 1. Fetch Basic Stats
                   stats = res["data"]["matchedUser"]["submitStats"]["acSubmissionNum"]
                   total = next(item["count"] for item in stats if item["difficulty"] == "All")
                   easy = next(item["count"] for item in stats if item["difficulty"] == "Easy")
@@ -75,24 +70,16 @@ jobs:
                   hard = next(item["count"] for item in stats if item["difficulty"] == "Hard")
                   
                   contest = res["data"].get("userContestRanking")
-                  current_rating = round(contest.get("rating", 1674)) if contest else 1674
-                  global_rank = contest.get("globalRanking", "N/A") if contest else "N/A"
+                  current_rating = round(contest.get("rating", 1691)) if contest else 1691
+                  global_rank = f"{contest.get(\"globalRanking\"):,}" if contest and contest.get("globalRanking") else "N/A"
                   
-                  # 2. Extract Contest History (Attended contests only)
                   history = res["data"].get("userContestRankingHistory") or []
                   attended = [c for c in history if c.get("attended")]
-                  
-                  # Fallback plotting data if history is short
-                  if not attended:
-                      ratings = [1500, current_rating]
-                  else:
-                      ratings = [round(c["rating"]) for c in attended]
-
+                  ratings = [round(c["rating"]) for c in attended] if attended else [1500, current_rating]
                   peak_rating = max(ratings) if ratings else current_rating
 
-                  # 3. Graph Plotting Calculations
-                  width, height = 500, 240
-                  pad_x, pad_y_top, pad_y_bottom = 50, 80, 40
+                  width, height = 495, 195
+                  pad_x, pad_y_top, pad_y_bottom = 45, 65, 38
                   graph_w = width - (pad_x * 2)
                   graph_h = height - pad_y_top - pad_y_bottom
                   
@@ -109,54 +96,92 @@ jobs:
 
                   poly_points = " ".join([f"{x:.1f},{y:.1f}" for x, y in points])
                   
-                  dots_html = ""
-                  for x, y in points:
-                      dots_html += f"""<circle cx="{x:.1f}" cy="{y:.1f}" r="3.5" fill="#36BCF7" stroke="#1a1b26" stroke-width="1.5" />"""
+                  # Create area polygon fill under line
+                  area_points = f"{pad_x},{height-pad_y_bottom} " + poly_points + f" {width-pad_x},{height-pad_y_bottom}"
 
-                  # Generate SVG
-                  svg = f"""<svg width="500" height="240" viewBox="0 0 500 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  dots_html = ""
+                  for idx, (x, y) in enumerate(points):
+                      is_last = (idx == len(points) - 1)
+                      dot_class = "latest-dot" if is_last else "dot"
+                      dots_html += f"""<circle cx="{x:.1f}" cy="{y:.1f}" r="3" class="{dot_class}" />"""
+
+                  svg = f"""<svg width="495" height="195" viewBox="0 0 495 195" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#2ac3de" />
+                <stop offset="50%" stop-color="#7aa2f7" />
+                <stop offset="100%" stop-color="#bb9af7" />
+              </linearGradient>
+              
+              <linearGradient id="areaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#7aa2f7" stop-opacity="0.3" />
+                <stop offset="100%" stop-color="#7aa2f7" stop-opacity="0.0" />
+              </linearGradient>
+
+              <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#16161e" />
+                <stop offset="100%" stop-color="#0f0f14" />
+              </linearGradient>
+
+              <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#3d59a1" stop-opacity="0.5"/>
+                <stop offset="100%" stop-color="#bb9af7" stop-opacity="0.2"/>
+              </linearGradient>
+
+              <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="2.5" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
+            </defs>
+
             <style>
-              .bg {{ fill: #1a1b26; rx: 12px; }}
-              .title {{ font: 600 16px "Segoe UI", Ubuntu, sans-serif; fill: #7aa2f7; }}
-              .badge-text {{ font: 600 12px "Segoe UI", Ubuntu, sans-serif; fill: #ff9e64; }}
-              .sub-text {{ font: 400 12px "Segoe UI", Ubuntu, sans-serif; fill: #a9b1d6; }}
-              .grid {{ stroke: #2ac3de; stroke-opacity: 0.15; stroke-dasharray: 4; }}
-              .line {{ fill: none; stroke: #36BCF7; stroke-width: 2.5; stroke-linejoin: round; }}
-              .label {{ font: 500 10px "Segoe UI", Ubuntu, sans-serif; fill: #565f89; }}
-              .easy {{ fill: #9ece6a; font-weight: 600; }}
-              .med {{ fill: #e0af68; font-weight: 600; }}
-              .hard {{ fill: #f7768e; font-weight: 600; }}
+              @keyframes pulse {{
+                0% {{ r: 3px; opacity: 0.8; }}
+                50% {{ r: 5.5px; opacity: 1; }}
+                100% {{ r: 3px; opacity: 0.8; }}
+              }}
+              .bg {{ fill: url(#cardBg); rx: 12px; stroke: url(#borderGrad); stroke-width: 1.5px; }}
+              .title {{ font: 700 15px "Segoe UI", system-ui, sans-serif; fill: #7dcfff; letter-spacing: 0.3px; }}
+              .badge-text {{ font: 700 12px "Segoe UI", system-ui, sans-serif; fill: #ff9e64; }}
+              .sub-text {{ font: 500 11px "Segoe UI", system-ui, sans-serif; fill: #a9b1d6; }}
+              .grid {{ stroke: #565f89; stroke-opacity: 0.2; stroke-dasharray: 4; }}
+              .line {{ fill: none; stroke: url(#lineGrad); stroke-width: 2.8; stroke-linejoin: round; filter: url(#glow); }}
+              .area {{ fill: url(#areaGrad); }}
+              .label {{ font: 500 10px "Segoe UI", system-ui, sans-serif; fill: #565f89; }}
+              .dot {{ fill: #2ac3de; stroke: #16161e; stroke-width: 1.2; }}
+              .latest-dot {{ fill: #bb9af7; stroke: #ffffff; stroke-width: 1.5; animation: pulse 2s infinite ease-in-out; filter: url(#glow); }}
+              .easy {{ fill: #9ece6a; font-weight: 700; }}
+              .med {{ fill: #e0af68; font-weight: 700; }}
+              .hard {{ fill: #f7768e; font-weight: 700; }}
             </style>
-            <rect width="500" height="240" class="bg"/>
+
+            <rect width="495" height="195" class="bg"/>
             
-            <!-- Header & Ratings -->
-            <text x="25" y="32" class="title">📈 LeetCode Contest Rating History</text>
-            <text x="25" y="55" class="sub-text">Current: <tspan class="badge-text">{current_rating}</tspan> | Peak: <tspan class="badge-text">{peak_rating}</tspan> | Rank: <tspan class="badge-text">{global_rank}</tspan></text>
+            <text x="25" y="28" class="title">📈 LeetCode Rating History</text>
+            <text x="25" y="47" class="sub-text">Current: <tspan class="badge-text">{current_rating}</tspan>  |  Peak: <tspan class="badge-text">{peak_rating}</tspan>  |  Global Rank: <tspan class="badge-text">{global_rank}</tspan></text>
             
-            <!-- Baseline Grid -->
             <line x1="{pad_x}" y1="{pad_y_top}" x2="{width-pad_x}" y2="{pad_y_top}" class="grid" />
             <line x1="{pad_x}" y1="{height-pad_y_bottom}" x2="{width-pad_x}" y2="{height-pad_y_bottom}" class="grid" />
-            <text x="{pad_x-10}" y="{pad_y_top+4}" text-anchor="end" class="label">{max_r}</text>
-            <text x="{pad_x-10}" y="{height-pad_y_bottom+4}" text-anchor="end" class="label">{min_r}</text>
+            <text x="{pad_x-8}" y="{pad_y_top+4}" text-anchor="end" class="label">{max_r}</text>
+            <text x="{pad_x-8}" y="{height-pad_y_bottom+4}" text-anchor="end" class="label">{min_r}</text>
 
-            <!-- Graph Line and Dots -->
+            <polygon points="{area_points}" class="area" />
             <polyline points="{poly_points}" class="line" />
             {dots_html}
 
-            <!-- Bottom Solved Breakdown -->
-            <text x="250" y="222" text-anchor="middle" class="sub-text">
-              Total Solved: <tspan class="badge-text">{total}</tspan> (
-              <tspan class="easy">Easy: {easy}</tspan> | 
-              <tspan class="med">Med: {medium}</tspan> | 
+            <text x="247" y="180" text-anchor="middle" class="sub-text">
+              Total Solved: <tspan class="badge-text">{total}</tspan>  (
+              <tspan class="easy">Easy: {easy}</tspan>  |  
+              <tspan class="med">Med: {medium}</tspan>  |  
               <tspan class="hard">Hard: {hard}</tspan> )
             </text>
           </svg>"""
 
                   with open("leetcode.svg", "w", encoding="utf-8") as f:
                       f.write(svg)
-                  print("Contest Rating Graph SVG generated successfully!")
+                  print("Aesthetic LeetCode SVG generated successfully!")
           except Exception as e:
-              print("Error fetching contest history:", e)
+              print("Error generating SVG:", e)
           '
 
       - name: Commit and Push Changes
@@ -164,5 +189,5 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add leetcode.svg
-          git diff --quiet && git diff --staged --quiet || git commit -m "Update LeetCode rating graph SVG"
+          git diff --quiet && git diff --staged --quiet || git commit -m "Update aesthetic LeetCode SVG"
           git push
