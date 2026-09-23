@@ -1,13 +1,13 @@
 <div align="center">
 
 # Hi there, I'm Arpit Seth 👋[cite: 1]
-### Software Engineer | Backend & Microservices Specialist | B.Tech CSE (AI/ML)[cite: 1]
+### Software Engineer | Backend Developer | B.Tech CSE (AI/ML)[cite: 1]
 
 Sitapur, U.P., India[cite: 1] • [arpitseth232@gmail.com](mailto:arpitseth232@gmail.com)[cite: 1]
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com)
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com)
-[![LeetCode](https://img.shields.io/badge/LeetCode-FFA116?style=for-the-badge&logo=leetcode&logoColor=black)](https://leetcode.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)]((https://www.linkedin.com/in/arpit-seth-509174273/))
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)]((https://github.com/Arpit-Seth232))
+[![LeetCode](https://img.shields.io/badge/LeetCode-FFA116?style=for-the-badge&logo=leetcode&logoColor=black)]((https://leetcode.com/u/Arpit_Seth/))
 
 <br />
 
@@ -36,7 +36,6 @@ Sitapur, U.P., India[cite: 1] • [arpitseth232@gmail.com](mailto:arpitseth232@g
 
 **Frameworks & Architecture:**
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white)
-![.NET Core](https://img.shields.io/badge/.NET_Core-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![Microservices](https://img.shields.io/badge/Microservices-00589C?style=for-the-badge&logo=diagramsdotnet&logoColor=white)
 
@@ -86,14 +85,14 @@ Sitapur, U.P., India[cite: 1] • [arpitseth232@gmail.com](mailto:arpitseth232@g
 ### 📊 GitHub & Coding Stats
 
 <div align="center">
-
-<img src="https://github-readme-stats.vercel.app/api?username=Arpit-Seth232&show_icons=true&theme=tokyonight&hide_border=true&count_private=true" alt="Arpit's GitHub Stats" width="48%" />
 <img src="https://github-readme-streak-stats.herokuapp.com/?user=Arpit-Seth232&theme=tokyonight&hide_border=true" alt="Arpit's Streak Stats" width="48%" />
 
 <br />
 
-<img src="https://leetcode-stats-card.vercel.app/api?username=Arpit_Seth&theme=dark" alt="Arpit's LeetCode Stats" width="48%" />
-
+<a href="https://leetcode.com/Arpit_Seth" target="_blank">
+  <img src="https://img.shields.io/badge/LeetCode-600%2B%20Problems%20Solved-FFA116?style=for-the-badge&logo=leetcode&logoColor=black" alt="LeetCode Problems Solved" />
+  <img src="https://img.shields.io/badge/LeetCode%20Peak%20Rating-1674-36BCF7?style=for-the-badge&logo=leetcode&logoColor=black" alt="LeetCode Peak Rating" />
+</a>
 </div>
 
 ---
