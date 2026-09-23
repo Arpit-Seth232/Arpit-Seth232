@@ -11,7 +11,7 @@ Sitapur, U.P., India • [arpitseth232@gmail.com](mailto:arpitseth232@gmail.com)
 
 <br />
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&pause=1000&color=36BCF7&center=true&vcenter=true&width=600&lines=Java+Spring+Boot+%26+C%23;Microservices+%26+Event-Driven+Architectures;Kafka%2C+Redis%2C+Docker+%26+Distributed+Systems;600%2B+LeetCode+Problems+Solved)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&pause=1000&color=36BCF7&center=true&vcenter=true&width=600&lines=Java+Spring+Boot+%26+C%2B%2B;Microservices+%26+Event-Driven+Architectures;Kafka%2C+Redis%2C+Docker+%26+Distributed+Systems;600%2B+LeetCode+Problems+Solved)](https://git.io/typing-svg)
 
 </div>
 
@@ -21,8 +21,16 @@ Sitapur, U.P., India • [arpitseth232@gmail.com](mailto:arpitseth232@gmail.com)
 
 <div align="center">
 
-<img src="https://streak-stats.demolab.com/?user=Arpit-Seth232&theme=tokyonight&hide_border=true" alt="Arpit's Streak Stats" width="48%" align="top" />
-<img src="./leetcode.svg" alt="LeetCode Rating History" width="48%" align="top" />
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="50%" align="center" valign="top">
+      <img src="https://streak-stats.demolab.com/?user=Arpit-Seth232&theme=tokyonight&hide_border=true" width="100%" />
+    </td>
+    <td width="50%" align="center" valign="top">
+      <img src="./leetcode.svg" width="100%" />
+    </td>
+  </tr>
+</table>
 
 </div>
 
