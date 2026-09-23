@@ -40,7 +40,6 @@ Sitapur, U.P., India • [arpitseth232@gmail.com](mailto:arpitseth232@gmail.com)
 - 🧩 **LeetCode Problem Solver:** Solved **600+ problems** with a peak rating of **1674**.
 - 💯 **Academic Perfection:** Scored **100/100** in Mathematics IV during AKTU University finals.
 - 🎓 **Top Academic Record:** **8.58/10 CGPA** in B.Tech CSE-AI/ML at ABES Engineering College.
-- 🏫 **School Topper:** **92.4%** in Class 12 CBSE & **89.4%** in Class 10 CBSE.
 
 ---
 
