@@ -1,27 +1,27 @@
 <div align="center">
 
-# Hi there, I'm Arpit Seth 👋[cite: 1]
-### Software Engineer | Backend Developer | B.Tech CSE (AI/ML)[cite: 1]
+# Hi there, I'm Arpit Seth 👋
+### Software Engineer | Backend Developer | B.Tech CSE (AI/ML)
 
-Sitapur, U.P., India[cite: 1] • [arpitseth232@gmail.com](mailto:arpitseth232@gmail.com)[cite: 1]
+Sitapur, U.P., India • [arpitseth232@gmail.com](mailto:arpitseth232@gmail.com)
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)]((https://www.linkedin.com/in/arpit-seth-509174273/))
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)]((https://github.com/Arpit-Seth232))
-[![LeetCode](https://img.shields.io/badge/LeetCode-FFA116?style=for-the-badge&logo=leetcode&logoColor=black)]((https://leetcode.com/u/Arpit_Seth/))
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/arpit-seth-509174273/)
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Arpit-Seth232)
+[![LeetCode](https://img.shields.io/badge/LeetCode-FFA116?style=for-the-badge&logo=leetcode&logoColor=black)](https://leetcode.com/u/Arpit_Seth/)
 
 <br />
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&pause=1000&color=36BCF7&center=true&vcenter=true&width=600&lines=Java+Spring+Boot+%26+C%23+ASP.NET+Core;Microservices+%26+Event-Driven+Architectures;Kafka%2C+Redis%2C+Docker+%26+Distributed+Systems;600%2B+LeetCode+Problems+Solved)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&pause=1000&color=36BCF7&center=true&vcenter=true&width=600&lines=Java+Spring+Boot+%26+C%23;Microservices+%26+Event-Driven+Architectures;Kafka%2C+Redis%2C+Docker+%26+Distributed+Systems;600%2B+LeetCode+Problems+Solved)](https://git.io/typing-svg)
 
 </div>
 
 ---
 
 ### 🏆 Key Achievements
-- 🧩 **LeetCode Problem Solver:** Solved **600+ problems** with a peak rating of **1674**[cite: 1].
-- 💯 **Academic Perfection:** Scored **100/100** in Mathematics IV during AKTU University finals[cite: 1].
-- 🎓 **Top Academic Record:** **8.58/10 CGPA** in B.Tech CSE-AI/ML at ABES Engineering College[cite: 1].
-- 🏫 **School Topper:** **92.4%** in Class 12 CBSE & **89.4%** in Class 10 CBSE[cite: 1].
+- 🧩 **LeetCode Problem Solver:** Solved **600+ problems** with a peak rating of **1674**.
+- 💯 **Academic Perfection:** Scored **100/100** in Mathematics IV during AKTU University finals.
+- 🎓 **Top Academic Record:** **8.58/10 CGPA** in B.Tech CSE-AI/ML at ABES Engineering College.
+- 🏫 **School Topper:** **92.4%** in Class 12 CBSE & **89.4%** in Class 10 CBSE.
 
 ---
 
@@ -56,43 +56,46 @@ Sitapur, U.P., India[cite: 1] • [arpitseth232@gmail.com](mailto:arpitseth232@g
 
 ### 💼 Work Experience
 
-#### **Programmer Analyst Trainee** | Cognizant *(Mar 2026 – June 2026)*[cite: 1]
-- Engineered enterprise RESTful APIs using **C#, ASP.NET Core**, and **MySQL** for device lifecycle management[cite: 1].
-- Implemented **JWT Authentication** and **Role-Based Access Control (RBAC)** for strict secure access management[cite: 1].
-- Standardized API documentation and service injection using **Dependency Injection** and **Swagger/OpenAPI**[cite: 1].
+#### **Programmer Analyst Trainee** | Cognizant *(Mar 2026 – June 2026)*
+- Engineered enterprise RESTful APIs using **C#, ASP.NET Core**, and **MySQL** for device lifecycle management.
+- Implemented **JWT Authentication** and **Role-Based Access Control (RBAC)** for strict secure access management.
+- Standardized API documentation and service injection using **Dependency Injection** and **Swagger/OpenAPI**.
 
-#### **Backend Engineering Intern** | Extramarks Education *(Dec 2025 – Feb 2026)*[cite: 1]
-- Developed Syllabus and Content microservices using **Java Spring Boot**, **PostgreSQL**, and **MongoDB**[cite: 1].
-- Designed real-time event processing using **Apache Kafka** and accelerated query responses with **Redis Cache**[cite: 1].
-- Implemented centralized API logging with **MongoDB Atlas**, performance monitoring with **Spring AOP**, and inter-service communication via **Feign Client**[cite: 1].
+#### **Backend Engineering Intern** | Extramarks Education *(Dec 2025 – Feb 2026)*
+- Developed Syllabus and Content microservices using **Java Spring Boot**, **PostgreSQL**, and **MongoDB**.
+- Designed real-time event processing using **Apache Kafka** and accelerated query responses with **Redis Cache**.
+- Implemented centralized API logging with **MongoDB Atlas**, performance monitoring with **Spring AOP**, and inter-service communication via **Feign Client**.
 
 ---
 
 ### 🚀 Featured Projects
 
-#### 🛠️ [DevFlow – Developer Productivity Tracker](https://github.com) *(Aug 2026 – Present)*[cite: 1]
-*Tech Stack: Java Spring Boot, PostgreSQL, Apache Kafka, Redis, Docker, GitHub Actions, JUnit 5*[cite: 1]
-- Built a production-grade REST API utilizing the **Transactional Outbox Pattern** to guarantee zero Kafka message loss[cite: 1].
-- Designed a cron-based **GitHub Activity Sync** capturing 4 event types with timestamp-based session linking[cite: 1].
-- Managed database migrations across 9 versions using **Flyway** and enforced secure refresh token rotation with **Redis**[cite: 1].
+#### 🛠️ [DevFlow – Developer Productivity Tracker](https://github.com/Arpit-Seth232/DevFlow) *(Aug 2026 – Present)*
+*Tech Stack: Java Spring Boot, PostgreSQL, Apache Kafka, Redis, Docker, GitHub Actions, JUnit 5*
+- Built a production-grade REST API utilizing the **Transactional Outbox Pattern** to guarantee zero Kafka message loss.
+- Designed a cron-based **GitHub Activity Sync** capturing 4 event types with timestamp-based session linking.
+- Managed database migrations across 9 versions using **Flyway** and enforced secure refresh token rotation with **Redis**.
 
-#### 🏦 [Bank Management System](https://github.com) *(Apr 2025)*[cite: 1]
-*Tech Stack: C++, OOP, STL, File Handling*[cite: 1]
-- Built an object-oriented system in C++ with full support for account management, transactional actions, and persistent file storage[cite: 1].
+#### 🏦 [Bank Management System](https://github.com/Arpit-Seth232/Bank-Management-System) *(Apr 2025)*
+*Tech Stack: C++, OOP, STL, File Handling*
+- Built an object-oriented system in C++ with full support for account management, transactional actions, and persistent file storage.
 
 ---
 
 ### 📊 GitHub & Coding Stats
 
 <div align="center">
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=Arpit-Seth232&theme=tokyonight&hide_border=true" alt="Arpit's Streak Stats" width="48%" />
 
-<br />
+<img src="https://github-readme-stats.vercel.app/api?username=Arpit-Seth232&show_icons=true&theme=tokyonight&hide_border=true&count_private=true" alt="Arpit's GitHub Stats" width="48%" />
+<img src="https://streak-stats.demolab.com/?user=Arpit-Seth232&theme=tokyonight&hide_border=true" alt="Arpit's Streak Stats" width="48%" />
 
-<a href="https://leetcode.com/Arpit_Seth" target="_blank">
+<br /><br />
+
+<a href="https://leetcode.com/u/Arpit_Seth/" target="_blank">
   <img src="https://img.shields.io/badge/LeetCode-600%2B%20Problems%20Solved-FFA116?style=for-the-badge&logo=leetcode&logoColor=black" alt="LeetCode Problems Solved" />
   <img src="https://img.shields.io/badge/LeetCode%20Peak%20Rating-1674-36BCF7?style=for-the-badge&logo=leetcode&logoColor=black" alt="LeetCode Peak Rating" />
 </a>
+
 </div>
 
 ---
