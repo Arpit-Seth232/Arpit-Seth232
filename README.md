@@ -11,7 +11,7 @@ Sitapur, U.P., India • [arpitseth232@gmail.com](mailto:arpitseth232@gmail.com)
 
 <br />
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&pause=1000&color=36BCF7&center=true&vcenter=true&width=600&lines=Java+Spring+Boot+%26+C%23;Microservices+%26+Event-Driven+Architectures;Kafka%2C+Redis%2C+Docker+%26+Distributed+Systems;600%2B+LeetCode+Problems+Solved)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&pause=1000&color=36BCF7&center=true&vcenter=true&width=600&lines=Java+Spring+Boot;Microservices+%26+Event-Driven+Architectures;Kafka%2C+Redis%2C+Docker+%26+Distributed+Systems;600%2B+LeetCode+Problems+Solved)](https://git.io/typing-svg)
 
 </div>
 
@@ -76,7 +76,7 @@ Sitapur, U.P., India • [arpitseth232@gmail.com](mailto:arpitseth232@gmail.com)
 - Designed a cron-based **GitHub Activity Sync** capturing 4 event types with timestamp-based session linking.
 - Managed database migrations across 9 versions using **Flyway** and enforced secure refresh token rotation with **Redis**.
 
-#### 🏦 [Bank Management System](https://github.com/Arpit-Seth232/Bank-Management-System) *(Apr 2025)*
+#### 🏦 [Bank Management System](https://github.com/Arpit-Seth232/Bank_Management_System) *(Apr 2025)*
 *Tech Stack: C++, OOP, STL, File Handling*
 - Built an object-oriented system in C++ with full support for account management, transactional actions, and persistent file storage.
 
@@ -86,7 +86,6 @@ Sitapur, U.P., India • [arpitseth232@gmail.com](mailto:arpitseth232@gmail.com)
 
 <div align="center">
 
-<img src="https://github-readme-stats.vercel.app/api?username=Arpit-Seth232&show_icons=true&theme=tokyonight&hide_border=true&count_private=true" alt="Arpit's GitHub Stats" width="48%" />
 <img src="https://streak-stats.demolab.com/?user=Arpit-Seth232&theme=tokyonight&hide_border=true" alt="Arpit's Streak Stats" width="48%" />
 
 <br /><br />
