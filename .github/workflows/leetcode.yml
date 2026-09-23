@@ -2,8 +2,13 @@ name: Update LeetCode Stats SVG
 
 on:
   schedule:
-    - cron: '0 0 * * *' # Runs every day at midnight
+    - cron: '0 0 * * *' # Runs every day at midnight UTC
   workflow_dispatch: # Allows manual trigger from Actions tab
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'leetcode.svg'
 
 jobs:
   update-leetcode:
@@ -20,7 +25,7 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Fetch Data & Generate LeetCode SVG
+      - name: Fetch Data & Generate Contest Rating Graph SVG
         run: |
           python -c '
           import urllib.request
@@ -28,7 +33,7 @@ jobs:
 
           username = "Arpit_Seth"
           query = """
-          query getUserProfile($username: String!) {
+          query getContestStats($username: String!) {
             matchedUser(username: $username) {
               submitStats {
                 acSubmissionNum {
@@ -40,6 +45,14 @@ jobs:
             userContestRanking(username: $username) {
               rating
               globalRanking
+              topPercentage
+            }
+            userContestRankingHistory(username: $username) {
+              attended
+              rating
+              contest {
+                title
+              }
             }
           }
           """
@@ -54,6 +67,7 @@ jobs:
               with urllib.request.urlopen(req) as response:
                   res = json.loads(response.read().decode())
                   
+                  # 1. Fetch Basic Stats
                   stats = res["data"]["matchedUser"]["submitStats"]["acSubmissionNum"]
                   total = next(item["count"] for item in stats if item["difficulty"] == "All")
                   easy = next(item["count"] for item in stats if item["difficulty"] == "Easy")
@@ -61,41 +75,88 @@ jobs:
                   hard = next(item["count"] for item in stats if item["difficulty"] == "Hard")
                   
                   contest = res["data"].get("userContestRanking")
-                  if contest:
-                      rating = str(round(contest.get("rating", 1674)))
-                      g_rank = contest.get("globalRanking")
-                      ranking = f"{g_rank:,}" if g_rank is not None else "N/A"
+                  current_rating = round(contest.get("rating", 1674)) if contest else 1674
+                  global_rank = contest.get("globalRanking", "N/A") if contest else "N/A"
+                  
+                  # 2. Extract Contest History (Attended contests only)
+                  history = res["data"].get("userContestRankingHistory") or []
+                  attended = [c for c in history if c.get("attended")]
+                  
+                  # Fallback plotting data if history is short
+                  if not attended:
+                      ratings = [1500, current_rating]
                   else:
-                      rating = "1674"
-                      ranking = "N/A"
+                      ratings = [round(c["rating"]) for c in attended]
 
-                  svg = f"""<svg width="420" height="180" viewBox="0 0 420 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  peak_rating = max(ratings) if ratings else current_rating
+
+                  # 3. Graph Plotting Calculations
+                  width, height = 500, 240
+                  pad_x, pad_y_top, pad_y_bottom = 50, 80, 40
+                  graph_w = width - (pad_x * 2)
+                  graph_h = height - pad_y_top - pad_y_bottom
+                  
+                  min_r = min(ratings) - 20
+                  max_r = max(ratings) + 20
+                  r_range = max_r - min_r if max_r != min_r else 100
+
+                  points = []
+                  n = len(ratings)
+                  for i, r in enumerate(ratings):
+                      x = pad_x if n == 1 else pad_x + (i / (n - 1)) * graph_w
+                      y = height - pad_y_bottom - ((r - min_r) / r_range) * graph_h
+                      points.append((x, y))
+
+                  poly_points = " ".join([f"{x:.1f},{y:.1f}" for x, y in points])
+                  
+                  dots_html = ""
+                  for x, y in points:
+                      dots_html += f"""<circle cx="{x:.1f}" cy="{y:.1f}" r="3.5" fill="#36BCF7" stroke="#1a1b26" stroke-width="1.5" />"""
+
+                  # Generate SVG
+                  svg = f"""<svg width="500" height="240" viewBox="0 0 500 240" fill="none" xmlns="http://www.w3.org/2000/svg">
             <style>
-              .bg {{ fill: #1a1b26; rx: 10px; }}
+              .bg {{ fill: #1a1b26; rx: 12px; }}
               .title {{ font: 600 16px "Segoe UI", Ubuntu, sans-serif; fill: #7aa2f7; }}
-              .stat {{ font: 400 13px "Segoe UI", Ubuntu, sans-serif; fill: #a9b1d6; }}
-              .highlight {{ font: 600 13px "Segoe UI", Ubuntu, sans-serif; fill: #ff9e64; }}
+              .badge-text {{ font: 600 12px "Segoe UI", Ubuntu, sans-serif; fill: #ff9e64; }}
+              .sub-text {{ font: 400 12px "Segoe UI", Ubuntu, sans-serif; fill: #a9b1d6; }}
+              .grid {{ stroke: #2ac3de; stroke-opacity: 0.15; stroke-dasharray: 4; }}
+              .line {{ fill: none; stroke: #36BCF7; stroke-width: 2.5; stroke-linejoin: round; }}
+              .label {{ font: 500 10px "Segoe UI", Ubuntu, sans-serif; fill: #565f89; }}
               .easy {{ fill: #9ece6a; font-weight: 600; }}
               .med {{ fill: #e0af68; font-weight: 600; }}
               .hard {{ fill: #f7768e; font-weight: 600; }}
             </style>
-            <rect width="420" height="180" class="bg"/>
-            <text x="25" y="35" class="title">🧩 Live LeetCode Stats (@{username})</text>
-            <text x="25" y="70" class="stat">Contest Rating: <tspan class="highlight">{rating}</tspan></text>
-            <text x="25" y="95" class="stat">Global Ranking: <tspan class="highlight">{ranking}</tspan></text>
-            <text x="25" y="125" class="stat">Total Problems Solved: <tspan class="highlight">{total}</tspan></text>
-            <text x="25" y="150" class="stat">
-              <tspan class="easy">Easy: {easy}</tspan>  |  
-              <tspan class="med">Medium: {medium}</tspan>  |  
-              <tspan class="hard">Hard: {hard}</tspan>
+            <rect width="500" height="240" class="bg"/>
+            
+            <!-- Header & Ratings -->
+            <text x="25" y="32" class="title">📈 LeetCode Contest Rating History</text>
+            <text x="25" y="55" class="sub-text">Current: <tspan class="badge-text">{current_rating}</tspan> | Peak: <tspan class="badge-text">{peak_rating}</tspan> | Rank: <tspan class="badge-text">{global_rank}</tspan></text>
+            
+            <!-- Baseline Grid -->
+            <line x1="{pad_x}" y1="{pad_y_top}" x2="{width-pad_x}" y2="{pad_y_top}" class="grid" />
+            <line x1="{pad_x}" y1="{height-pad_y_bottom}" x2="{width-pad_x}" y2="{height-pad_y_bottom}" class="grid" />
+            <text x="{pad_x-10}" y="{pad_y_top+4}" text-anchor="end" class="label">{max_r}</text>
+            <text x="{pad_x-10}" y="{height-pad_y_bottom+4}" text-anchor="end" class="label">{min_r}</text>
+
+            <!-- Graph Line and Dots -->
+            <polyline points="{poly_points}" class="line" />
+            {dots_html}
+
+            <!-- Bottom Solved Breakdown -->
+            <text x="250" y="222" text-anchor="middle" class="sub-text">
+              Total Solved: <tspan class="badge-text">{total}</tspan> (
+              <tspan class="easy">Easy: {easy}</tspan> | 
+              <tspan class="med">Med: {medium}</tspan> | 
+              <tspan class="hard">Hard: {hard}</tspan> )
             </text>
           </svg>"""
 
                   with open("leetcode.svg", "w", encoding="utf-8") as f:
                       f.write(svg)
-                  print("leetcode.svg generated successfully!")
+                  print("Contest Rating Graph SVG generated successfully!")
           except Exception as e:
-              print("Error fetching LeetCode data:", e)
+              print("Error fetching contest history:", e)
           '
 
       - name: Commit and Push Changes
@@ -103,5 +164,5 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add leetcode.svg
-          git diff --quiet && git diff --staged --quiet || git commit -m "Update dynamic LeetCode SVG"
+          git diff --quiet && git diff --staged --quiet || git commit -m "Update LeetCode rating graph SVG"
           git push
