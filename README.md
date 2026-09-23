@@ -95,6 +95,10 @@ Sitapur, U.P., India • [arpitseth232@gmail.com](mailto:arpitseth232@gmail.com)
   <img src="https://img.shields.io/badge/LeetCode%20Peak%20Rating-1674-36BCF7?style=for-the-badge&logo=leetcode&logoColor=black" alt="LeetCode Peak Rating" />
 </a>
 
+<div align="center">
+  <img src="./leetcode.svg" alt="Arpit Seth LeetCode Stats" />
+</div>
+
 </div>
 
 ---
