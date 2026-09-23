@@ -21,12 +21,12 @@ Sitapur, U.P., India • [arpitseth232@gmail.com](mailto:arpitseth232@gmail.com)
 
 <div align="center">
 
-<table border="0" cellspacing="0" cellpadding="0">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
   <tr>
-    <td width="50%" align="center" valign="top">
-      <img src="https://streak-stats.demolab.com/?user=Arpit-Seth232&theme=tokyonight&hide_border=true" width="100%" />
+    <td width="50%" align="center" valign="middle">
+      <img src="https://streak-stats.demolab.com/?user=Arpit-Seth232&theme=tokyonight&hide_border=true&border_radius=12" width="100%" />
     </td>
-    <td width="50%" align="center" valign="top">
+    <td width="50%" align="center" valign="middle">
       <img src="./leetcode.svg" width="100%" />
     </td>
   </tr>
