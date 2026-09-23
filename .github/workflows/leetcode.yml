@@ -60,9 +60,14 @@ jobs:
                   medium = next(item["count"] for item in stats if item["difficulty"] == "Medium")
                   hard = next(item["count"] for item in stats if item["difficulty"] == "Hard")
                   
-                  contest = res["data"]["userContestRanking"]
-                  rating = round(contest["rating"]) if contest else "1674"
-                  ranking = f"{contest[\"globalRanking\"]:,}" if contest else "N/A"
+                  contest = res["data"].get("userContestRanking")
+                  if contest:
+                      rating = str(round(contest.get("rating", 1674)))
+                      g_rank = contest.get("globalRanking")
+                      ranking = f"{g_rank:,}" if g_rank is not None else "N/A"
+                  else:
+                      rating = "1674"
+                      ranking = "N/A"
 
                   svg = f"""<svg width="420" height="180" viewBox="0 0 420 180" fill="none" xmlns="http://www.w3.org/2000/svg">
             <style>
