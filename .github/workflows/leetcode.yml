@@ -71,7 +71,9 @@ jobs:
                   
                   contest = res["data"].get("userContestRanking")
                   current_rating = round(contest.get("rating", 1691)) if contest else 1691
-                  global_rank = f"{contest.get(\"globalRanking\"):,}" if contest and contest.get("globalRanking") else "N/A"
+                  
+                  g_rank = contest.get("globalRanking") if contest else None
+                  global_rank = f"{g_rank:,}" if g_rank is not None else "N/A"
                   
                   history = res["data"].get("userContestRankingHistory") or []
                   attended = [c for c in history if c.get("attended")]
@@ -95,8 +97,6 @@ jobs:
                       points.append((x, y))
 
                   poly_points = " ".join([f"{x:.1f},{y:.1f}" for x, y in points])
-                  
-                  # Create area polygon fill under line
                   area_points = f"{pad_x},{height-pad_y_bottom} " + poly_points + f" {width-pad_x},{height-pad_y_bottom}"
 
                   dots_html = ""
