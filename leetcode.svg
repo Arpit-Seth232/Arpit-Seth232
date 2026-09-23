@@ -1,0 +1,21 @@
+<svg width="420" height="180" viewBox="0 0 420 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .bg { fill: #1a1b26; rx: 10px; }
+    .title { font: 600 16px "Segoe UI", Ubuntu, sans-serif; fill: #7aa2f7; }
+    .stat { font: 400 13px "Segoe UI", Ubuntu, sans-serif; fill: #a9b1d6; }
+    .highlight { font: 600 13px "Segoe UI", Ubuntu, sans-serif; fill: #ff9e64; }
+    .easy { fill: #9ece6a; font-weight: 600; }
+    .med { fill: #e0af68; font-weight: 600; }
+    .hard { fill: #f7768e; font-weight: 600; }
+  </style>
+  <rect width="420" height="180" class="bg"/>
+  <text x="25" y="35" class="title">🧩 Live LeetCode Stats (@Arpit_Seth)</text>
+  <text x="25" y="70" class="stat">Contest Rating: <tspan class="highlight">1691</tspan></text>
+  <text x="25" y="95" class="stat">Global Ranking: <tspan class="highlight">128,042</tspan></text>
+  <text x="25" y="125" class="stat">Total Problems Solved: <tspan class="highlight">627</tspan></text>
+  <text x="25" y="150" class="stat">
+    <tspan class="easy">Easy: 228</tspan>  |  
+    <tspan class="med">Medium: 350</tspan>  |  
+    <tspan class="hard">Hard: 49</tspan>
+  </text>
+</svg>
