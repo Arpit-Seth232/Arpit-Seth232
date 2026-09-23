@@ -87,12 +87,12 @@ Sitapur, U.P., India[cite: 1] • [arpitseth232@gmail.com](mailto:arpitseth232@g
 
 <div align="center">
 
-<img src="https://github-readme-stats.vercel.app/api?username=YOUR_GITHUB_USERNAME&show_icons=true&theme=tokyonight&hide_border=true&count_private=true" alt="Arpit's GitHub Stats" width="48%" />
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=YOUR_GITHUB_USERNAME&theme=tokyonight&hide_border=true" alt="Arpit's Streak Stats" width="48%" />
+<img src="https://github-readme-stats.vercel.app/api?username=Arpit-Seth232&show_icons=true&theme=tokyonight&hide_border=true&count_private=true" alt="Arpit's GitHub Stats" width="48%" />
+<img src="https://github-readme-streak-stats.herokuapp.com/?user=Arpit-Seth232&theme=tokyonight&hide_border=true" alt="Arpit's Streak Stats" width="48%" />
 
 <br />
 
-<img src="https://leetcode-stats-card.vercel.app/api?username=YOUR_LEETCODE_USERNAME&theme=dark" alt="Arpit's LeetCode Stats" width="48%" />
+<img src="https://leetcode-stats-card.vercel.app/api?username=Arpit_Seth&theme=dark" alt="Arpit's LeetCode Stats" width="48%" />
 
 </div>
 
