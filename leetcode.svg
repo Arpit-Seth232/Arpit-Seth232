@@ -105,9 +105,9 @@
   <circle cx="450.0" cy="70.5" r="4" class="latest-beacon" />
 
   <text x="247" y="180" text-anchor="middle" class="sub-text">
-    Total Solved: <tspan class="badge-val">630</tspan>  (
-    <tspan class="easy">Easy: 229</tspan>  |  
-    <tspan class="med">Med: 352</tspan>  |  
+    Total Solved: <tspan class="badge-val">632</tspan>  (
+    <tspan class="easy">Easy: 230</tspan>  |  
+    <tspan class="med">Med: 353</tspan>  |  
     <tspan class="hard">Hard: 49</tspan> )
   </text>
 </svg>
