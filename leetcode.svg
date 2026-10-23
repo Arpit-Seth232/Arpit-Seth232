@@ -90,7 +90,7 @@
   <rect width="495" height="195" class="bg"/>
   
   <text x="22" y="28" class="title">📈 LeetCode Rating History</text>
-  <text x="22" y="46" class="sub-text">Current: <tspan class="badge-val">1737</tspan>  |  Peak: <tspan class="badge-val">1737</tspan>  |  Rank: <tspan class="badge-val">100,996</tspan></text>
+  <text x="22" y="46" class="sub-text">Current: <tspan class="badge-val">1737</tspan>  |  Peak: <tspan class="badge-val">1737</tspan>  |  Rank: <tspan class="badge-val">101,196</tspan></text>
   
   <line x1="45" y1="62" x2="450" y2="62" class="grid" />
   <line x1="45" y1="157" x2="450" y2="157" class="grid" />
