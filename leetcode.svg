@@ -90,7 +90,7 @@
   <rect width="495" height="195" class="bg"/>
   
   <text x="22" y="28" class="title">📈 LeetCode Rating History</text>
-  <text x="22" y="46" class="sub-text">Current: <tspan class="badge-val">1772</tspan>  |  Peak: <tspan class="badge-val">1772</tspan>  |  Rank: <tspan class="badge-val">84,983</tspan></text>
+  <text x="22" y="46" class="sub-text">Current: <tspan class="badge-val">1772</tspan>  |  Peak: <tspan class="badge-val">1772</tspan>  |  Rank: <tspan class="badge-val">85,096</tspan></text>
   
   <line x1="45" y1="62" x2="450" y2="62" class="grid" />
   <line x1="45" y1="157" x2="450" y2="157" class="grid" />
@@ -105,9 +105,9 @@
   <circle cx="450.0" cy="67.0" r="4" class="latest-beacon" />
 
   <text x="247" y="180" text-anchor="middle" class="sub-text">
-    Total Solved: <tspan class="badge-val">661</tspan>  (
+    Total Solved: <tspan class="badge-val">662</tspan>  (
     <tspan class="easy">Easy: 238</tspan>  |  
-    <tspan class="med">Med: 374</tspan>  |  
+    <tspan class="med">Med: 375</tspan>  |  
     <tspan class="hard">Hard: 49</tspan> )
   </text>
 </svg>
